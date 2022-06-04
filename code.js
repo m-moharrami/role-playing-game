@@ -26,6 +26,14 @@ const monster = {
     diceCount: 1
 }
 
+function Character(data){
+    this.elementId = data.elementId;
+    this.name = data.name;
+    this.avatar = data.avatar;
+    this.health = data.health;
+    this.diceCount = data.diceCount;
+}
+
 function renderCharacter(data) {
     const { elementId, name, avatar, health, diceCount } = data;
     const diceHtml = getDiceHtml(diceCount)
