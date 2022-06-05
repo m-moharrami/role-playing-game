@@ -32,20 +32,20 @@ function Character(data){
     this.getCharacterHtml = function(){
         const { elementId, name, avatar, health, diceCount } = data;
         let diceHtml = this.getDiceHtml(diceCount)
-        document.getElementById(elementId).innerHTML =
-            `<div class="character-card">
-                <h4 class="name"> ${name} </h4>
-                <img class="avatar" src="${avatar}" />
-                <div class="health">health: <b> ${health} </b></div>
-                <div class="dice-container">    
-                    ${diceHtml}
-                </div>
-            </div>`;
+        return `<div class="character-card">
+                    <h4 class="name">${name}</h4>
+                    <img class="avatar" src="${avatar}" />
+                    <div class="health">health:<b>${health}</b></div>
+                    <div class="dice-container">${diceHtml}</div>
+                </div>`;
     }
 }
 
 const wizard = new Character(hero);
-wizard.getCharacterHtml();
-
 const orc = new Character(monster);
-orc.getCharacterHtml();
+
+function render(){
+    document.getElementById(wizard.elementId).innerHTML = wizard.getCharacterHtml();
+    document.getElementById(orc.elementId).innerHTML = orc.getCharacterHtml();
+}
+render();
