@@ -13,6 +13,7 @@ html, body {
 main {
     display:flex;
     flex-direction: column;
+    width:100vw;
     align-items: center;
     margin-top: .5rem;
 } 
@@ -137,7 +138,7 @@ main {
 
 @media(min-width:550px){
     .dice-container {
-        height: 30%;
+        height: 25%; /*I changed this, in the course it was 30% */
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
     }
@@ -151,7 +152,7 @@ main {
     border:1px solid #666;
     color:#000721;
     text-align: center;
-    line-height: 6vh;
+    line-height: 6vh; 
 }
 
 @media(min-width:550px){
