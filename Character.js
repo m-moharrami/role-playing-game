@@ -1,9 +1,13 @@
 import {getDiceRollArray, getDicePlaceholderHtml} from './utils.js';
 
+const getPercentage = (remainingHealth, maximumHealth) => 
+    (100 * remainingHealth) / maximumHealth;
+
 function Character(data){
     Object.assign(this, data);
-
     this.diceArray = getDicePlaceholderHtml(this.diceCount);
+
+    this.maxHealth = this.health;
 
     this.getDiceHtml = function(diceCount){
         this.currentDiceScore = getDiceRollArray(this.diceCount);
@@ -13,8 +17,7 @@ function Character(data){
 
     this.takeDamage = function(attackScoreArray){
         // console.log(`${this.name}: ${attackScoreArray}`);
-        const totalAttackScore = attackScoreArray.reduce((total, num) => total + num)
-
+        const totalAttackScore = attackScoreArray.reduce((total, num) => total + num);
         this.health -= totalAttackScore;
         if(this.health <= 0){
             this.dead = true;
