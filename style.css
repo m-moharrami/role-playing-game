@@ -13,13 +13,12 @@ html, body {
 main {
     display:flex;
     flex-direction: column;
-    width:100vw;
     align-items: center;
     margin-top: .5rem;
 } 
 
 @media(min-width:550px){
-    main {
+   main {
         flex-direction: row;
         margin:6vh 5vw;
         justify-content: center;
@@ -40,8 +39,7 @@ main {
     position: relative;
     background: #231d24;
     text-align: center;
-    overflow: hidden;
-    border: 0.2rem solid #000721;
+    border: 0.08rem solid #000721;
     box-shadow: inset 0px 0px 6px 2px rgba(100,100,100,0.2),
                 0px 0px 10px rgba(117,182,214,0.2);
 }
@@ -134,11 +132,13 @@ main {
     justify-content: center;
     align-items: center;
     gap: .5rem;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 
 @media(min-width:550px){
     .dice-container {
-        height: 25%; /*I changed this, in the course it was 30% */
+        height: 30%;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
     }
@@ -152,7 +152,7 @@ main {
     border:1px solid #666;
     color:#000721;
     text-align: center;
-    line-height: 6vh; 
+    line-height: 6vh;
 }
 
 @media(min-width:550px){
@@ -191,6 +191,7 @@ button {
         margin-top: 0;
     }
 }
+
 
 button:focus { outline: 0 }
 
