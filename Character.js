@@ -9,11 +9,11 @@ class Character {
 
     setDiceHtml(){
         this.currentDiceScore = getDiceRollArray(this.diceCount);
-        this.diceArray = this.currentDiceScore.map((num) => 
+        this.diceHtml = this.currentDiceScore.map((num) => 
             `<div class="dice">${num}</div>`).join('');
     }
 
-    takeDamage(){
+    takeDamage(attackScoreArray){
         // console.log(`${this.name}: ${attackScoreArray}`);
         const totalAttackScore = attackScoreArray.reduce((total, num) => total + num);
         this.health -= totalAttackScore;
@@ -25,7 +25,6 @@ class Character {
 
     getHealthBarHtml(){
         const percent = getPercentage(this.health, this.maxHealth);
-        console.log(percent); //Temporary, for test
         return `<div class="health-bar-outer">
                     <div class="health-bar-inner ${percent < 26 ? "danger" : ""}"
                         style="width: ${percent}%;">
