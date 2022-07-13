@@ -1,18 +1,19 @@
 import {getDiceRollArray, getDicePlaceholderHtml, getPercentage} from './utils.js';
 
-function Character(data){
-    Object.assign(this, data);
-    this.diceHtml = getDicePlaceholderHtml(this.diceCount);
+class Character {
+    constructor(data){
+        Object.assign(this, data);
+        this.diceHtml = getDicePlaceholderHtml(this.diceCount);
+        this.maxHealth = this.health;
+    }
 
-    this.maxHealth = this.health;
-
-    this.setDiceHtml = function(diceCount){
+    setDiceHtml(){
         this.currentDiceScore = getDiceRollArray(this.diceCount);
         this.diceArray = this.currentDiceScore.map((num) => 
             `<div class="dice">${num}</div>`).join('');
     }
 
-    this.takeDamage = function(attackScoreArray){
+    takeDamage(){
         // console.log(`${this.name}: ${attackScoreArray}`);
         const totalAttackScore = attackScoreArray.reduce((total, num) => total + num);
         this.health -= totalAttackScore;
@@ -22,7 +23,7 @@ function Character(data){
         }
     }
 
-    this.getHealthBarHtml = function(){
+    getHealthBarHtml(){
         const percent = getPercentage(this.health, this.maxHealth);
         console.log(percent); //Temporary, for test
         return `<div class="health-bar-outer">
@@ -32,7 +33,7 @@ function Character(data){
                 </div>`
     }
 
-    this.getCharacterHtml = function(){
+    getCharacterHtml(){
         const { elementId, name, avatar, health, diceCount, diceHtml } = this;
         const healthBar = this.getHealthBarHtml();
         return `<div class="character-card">
